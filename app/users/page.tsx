@@ -25,7 +25,7 @@ export default function UsersPage() {
                 </tr>
                 </thead>
                 <tbody>
-                {users.map((user: any) => (
+                {users.map((user) => (
                     <tr key={user.id} className="hover:bg-red-400">
                         <td className="px-4 py-2 border">{user.id}</td>
                         <td className="px-4 py-2 border">{user.name}</td>
