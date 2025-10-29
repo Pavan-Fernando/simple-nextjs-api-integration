@@ -107,9 +107,9 @@
 
 "use client";
 
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import {useForm} from "react-hook-form";
+import {z} from "zod";
+import {zodResolver} from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 
 const schema = z.object({
@@ -129,8 +129,8 @@ export default function RegisterPage() {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<FormData>({ resolver: zodResolver(schema) });
+        formState: {errors, isSubmitting},
+    } = useForm<FormData>({resolver: zodResolver(schema)});
 
     const onSubmit = async (data: FormData) => {
         try {
@@ -151,73 +151,75 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 border rounded-xl shadow">
-            <h1 className="text-xl font-bold mb-4">Register</h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div>
-                    <input
-                        {...register("name")}
-                        placeholder="Full Name"
-                        className="w-full border p-2 rounded"
-                    />
-                    {errors.name && (
-                        <p className="text-red-500 text-sm">{errors.name.message}</p>
-                    )}
-                </div>
+        <div className="flex items-center justify-center min-h-screen">
+            <div className="max-w-md w-full p-6 border rounded-xl shadow bg-yellow-700">
+                <h1 className="text-xl font-bold mb-4">Register</h1>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <div>
+                        <input
+                            {...register("name")}
+                            placeholder="Full Name"
+                            className="w-full border p-2 rounded"
+                        />
+                        {errors.name && (
+                            <p className="text-red-500 text-sm">{errors.name.message}</p>
+                        )}
+                    </div>
 
-                <div>
-                    <input
-                        {...register("email")}
-                        placeholder="Email"
-                        className="w-full border p-2 rounded"
-                    />
-                    {errors.email && (
-                        <p className="text-red-500 text-sm">{errors.email.message}</p>
-                    )}
-                </div>
+                    <div>
+                        <input
+                            {...register("email")}
+                            placeholder="Email"
+                            className="w-full border p-2 rounded"
+                        />
+                        {errors.email && (
+                            <p className="text-red-500 text-sm">{errors.email.message}</p>
+                        )}
+                    </div>
 
-                <div>
-                    <input
-                        type="password"
-                        {...register("password")}
-                        placeholder="Password"
-                        className="w-full border p-2 rounded"
-                    />
-                    {errors.password && (
-                        <p className="text-red-500 text-sm">{errors.password.message}</p>
-                    )}
-                </div>
+                    <div>
+                        <input
+                            type="password"
+                            {...register("password")}
+                            placeholder="Password"
+                            className="w-full border p-2 rounded"
+                        />
+                        {errors.password && (
+                            <p className="text-red-500 text-sm">{errors.password.message}</p>
+                        )}
+                    </div>
 
-                <div>
-                    <input
-                        type="password"
-                        {...register("confirmPassword")}
-                        placeholder="Confirm Password"
-                        className="w-full border p-2 rounded"
-                    />
-                    {errors.confirmPassword && (
-                        <p className="text-red-500 text-sm">
-                            {errors.confirmPassword.message}
-                        </p>
-                    )}
-                </div>
+                    <div>
+                        <input
+                            type="password"
+                            {...register("confirmPassword")}
+                            placeholder="Confirm Password"
+                            className="w-full border p-2 rounded"
+                        />
+                        {errors.confirmPassword && (
+                            <p className="text-red-500 text-sm">
+                                {errors.confirmPassword.message}
+                            </p>
+                        )}
+                    </div>
 
-                <div>
-                    <input
-                        {...register("phone")}
-                        placeholder="Phone (Optional)"
-                        className="w-full border p-2 rounded"
-                    />
-                </div>
+                    <div>
+                        <input
+                            {...register("phone")}
+                            placeholder="Phone (Optional)"
+                            className="w-full border p-2 rounded"
+                        />
+                    </div>
 
-                <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-                >
-                    {isSubmitting ? "Submitting..." : "Register"}
-                </button>
-            </form>
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+                    >
+                        {isSubmitting ? "Submitting..." : "Register"}
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }
